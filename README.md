@@ -1,7 +1,10 @@
-<img src="https://github.com/amitpatle/SQL-PY/blob/main/standard.gif" align="center" />
-</div>
-# SQL Query Generator
+<div align="center"> <img src="https://github.com/amitpatle/SQL-PY/blob/main/standard.gif" >
 
+
+<br> <br>
+
+# - SQL Query Generator -
+</div>
 Welcome to the SQL Query Generator! This project utilizes a Large Language Model (LLM) to generate SQL queries based on user input prompts and database schemas. The tool also allows for the execution of these queries with user-provided database credentials.
 
 ## Table of Contents
