@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LLM SQL Query Generator</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Query Generator</h1>
+        <form action="/" method="post">
+            <br><br>
+            <div class="input-group">
+                <h3>Enter Your Prompt</h3>
+                <textarea name="user_text" id="user_text" rows="4"></textarea>
+                
+                <h2>Enter Your Database Schema</h2>
+                <textarea name="db_schema" id="db_schema" rows="4"></textarea>
+                
+                <h2>Model Temperature</h2>
+                <input type="text" id="temperature" name="temperature">
+            </div>
+            <input type="submit" value="Generate Query">
+        </form>
+
+        {% if sql_query %}
+        <form action="/execute_query" method="post">
+            <h2>Generated Query</h2>
+            <textarea name="query" id="query" rows="4">{{ sql_query }}</textarea>
+            
+            <h2>Human Feedback Score</h2>
+            <input type="range" id="feedback_score" name="feedback_score" min="0" max="100" step="1" value="0">
+            <div id="slider_value">Value: 0</div>
+            
+            <div class="input-group">
+                <h2>Database Credentials</h2>
+                <div class="input-row">
+                    <label for="user_name">User Name</label>
+                    <input type="text" id="user_name" name="user_name">
+                </div>
+                <div class="input-row">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password">
+                </div>
+                <div class="input-row">
+                    <label for="host">Host</label>
+                    <input type="text" id="host" name="host">
+                </div>
+                <div class="input-row">
+                    <label for="database">Database</label>
+                    <input type="text" id="database" name="database">
+                </div>
+            </div>
+            <input type="submit" value="Confirm Execution">
+        </form>
+        {% endif %}
+
+        <script>
+            document.getElementById('feedback_score').addEventListener('input', function() {
+                document.getElementById('slider_value').textContent = 'Value: ' + this.value;
+            });
+        </script>
+
+        {% if output_tuples %}
+        <h2>Records</h2>
+        <table id="records_table">
+            <thead>
+                <tr>
+                    {% for column in output_tuples[0] %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in output_tuples[1:] %}
+                    <tr>
+                        {% for value in row %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

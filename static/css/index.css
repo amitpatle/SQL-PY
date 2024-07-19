@@ -1,0 +1,140 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    color: #87ceeb;
+}
+
+h1 {
+    color: #87ceeb;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #87ceeb;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-row {
+    margin-bottom: 10px;
+}
+
+input, textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #87ceeb;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+input[type="submit"] {
+    background-color: #87ceeb;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #00bfff;
+}
+
+#feedback_score {
+    width: 50%;
+    margin: 10px auto;
+    display: block;
+    -webkit-appearance: none;
+    height: 10px;
+    background: #87ceeb;
+    outline: none;
+    border-radius: 5px;
+}
+
+#feedback_score::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #00bfff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#slider_value {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #87ceeb;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #87ceeb;
+}
+
+th {
+    background-color: #00bfff;
+}
+
+td {
+    background-color: #1e1e1e;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #00bfff;
+    color: #000000;
+    border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    input, textarea {
+        width: 100%;
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
